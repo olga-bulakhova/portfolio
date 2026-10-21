@@ -1,0 +1,83 @@
+@import 'tailwindcss';
+
+/* Ручное переключение тёмной темы по классу .dark на <html>.
+   В Tailwind v4 вариант задаётся директивой @custom-variant, а НЕ через @theme-переменную. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Динамические цвета, завязанные на системные CSS-переменные */
+  --color-glass-bg: var(--glass-bg);
+  --color-glass-border: var(--glass-border);
+  --color-glass-text: var(--text-main);
+  --color-invert-text: var(--text-main-invert);
+
+  --color-glass-muted: var(--text-muted);
+
+  --color-brand-primary: var(--color-primary);
+  --color-brand-secondary: var(--color-secondary);
+
+  /* Кастомные глубокие тени для четкого отделения слоев */
+  --shadow-glass-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-glass-md: 0 16px 48px 0 var(--glass-shadow);
+  --shadow-glass-glow: 0 0 25px -2px var(--color-primary-glow);
+
+  /* Контрастные mesh-градиенты, задающие динамику бэкграунду */
+  --background-image-mesh-light:
+    radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(13, 148, 136, 0.1) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(225, 29, 72, 0.06) 0px, transparent 60%);
+  --background-image-mesh-dark:
+    radial-gradient(at 0% 0%, rgba(49, 46, 129, 0.4) 0px, transparent 60%),
+    radial-gradient(at 100% 100%, rgba(2, 43, 58, 0.7) 0px, transparent 70%),
+    radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.95) 0px, transparent 50%);
+}
+
+/* Чистые CSS-переменные повышенной контрастности */
+:root {
+  /* Светлая тема */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(15, 23, 42, 0.15);
+  --glass-shadow: rgba(15, 23, 42, 0.08);
+
+  --text-main: #020617; /* Slate 950 */
+  --text-main-invert: #ffffff;
+  --text-muted: #334155; /* Slate 700 */
+
+  --color-primary: #4338ca; /* Indigo 700 */
+  --color-secondary: #0f766e; /* Teal 700 */
+  --color-primary-glow: rgba(67, 56, 202, 0.3);
+}
+
+:root.dark {
+  /* Тёмная тема */
+  --glass-bg: rgba(15, 23, 42, 0.95); /* Slate 900 */
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --glass-shadow: rgba(0, 0, 0, 0.6);
+
+  --text-main: #ffffff;
+  --text-main-invert: #020617;
+  --text-muted: #cbd5e1; /* Slate 300 */
+
+  --color-primary: #a5b4fc; /* Indigo 300 — неоновый акцент (было #656297) */
+  --color-secondary: #22d3ee; /* Cyan 400 */
+  --color-primary-glow: rgba(165, 180, 252, 0.4);
+}
+
+/* Базовые стили body с плавной сменой цвета */
+@utility body-base {
+  transition-property: color, background-color;
+  transition-duration: 300ms;
+  min-height: 100vh;
+  color: var(--text-main);
+  background-attachment: fixed;
+}
+
+body {
+  @apply body-base bg-slate-50 bg-mesh-light dark:bg-slate-950 dark:bg-mesh-dark;
+}
+
+/* Матовый эффект под плотную подложку */
+@utility glass-backdrop {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
