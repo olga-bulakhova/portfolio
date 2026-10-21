@@ -4,6 +4,7 @@ import { ArrowRightIcon } from '@/shared/icons/ArrowRightIcon';
 import { heroItemVariants } from '../model/heroAnimations';
 
 type HeroIntroProps = {
+  jobTitle: string; // 🌟 Добавили имя автора (например, "Иван Иванов")
   name: string;
   title: string;
   subRole: string;
@@ -12,6 +13,7 @@ type HeroIntroProps = {
 };
 
 export const HeroIntro = ({
+  jobTitle,
   name,
   title,
   subRole,
@@ -25,18 +27,29 @@ export const HeroIntro = ({
       className="inline-flex items-center gap-2 rounded-full border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 text-xs font-semibold tracking-wide text-brand-primary uppercase"
     >
       <span className="h-2 w-2 animate-pulse rounded-full bg-brand-primary" />
-      {name}
+      {jobTitle}
     </motion.div>
 
-    {/* Заголовок */}
-    <motion.h1
-      variants={heroItemVariants}
-      className="text-4xl leading-[1.1] font-black tracking-tight text-glass-text sm:text-5xl md:text-6xl"
-    >
-      <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent drop-shadow-sm">
-        {title}
-      </span>
-    </motion.h1>
+    <div className="space-y-2">
+      {/* 🌟 Имя и фамилия разработчика */}
+      <motion.p
+        variants={heroItemVariants}
+        className="text-xl font-bold tracking-tight text-glass-muted md:text-2xl"
+      >
+        Привет, меня зовут{' '}
+        <span className="font-black text-glass-text">{name}</span>
+      </motion.p>
+
+      {/* Заголовок */}
+      <motion.h1
+        variants={heroItemVariants}
+        className="text-4xl leading-[1.1] font-black tracking-tight text-glass-text sm:text-5xl md:text-6xl"
+      >
+        <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent drop-shadow-sm">
+          {title}
+        </span>
+      </motion.h1>
+    </div>
 
     {/* Подзаголовок / стек */}
     <motion.p

@@ -1,10 +1,13 @@
-// 📐 СТРОГИЕ ИНТЕРФЕЙСЫ ДАННЫХ ПОРТФОЛИО
+export type ProjectCategory = 'frontend' | 'fullstack' | 'web3';
+export type SkillIconName = 'code' | 'server' | 'layout' | 'wrench';
+export type ContactIconName = 'telegram' | 'github' | 'mail' | 'linkedin';
+
 export interface IProject {
   readonly id: string;
   readonly title: string;
   readonly subtitle: string;
   readonly description: string;
-  readonly category: 'frontend' | 'fullstack' | 'web3'; // Сделали категории более рыночными
+  readonly category: ProjectCategory;
   readonly technologies: readonly string[];
   readonly links: {
     readonly live: string;
@@ -23,9 +26,9 @@ export interface IExperience {
 }
 
 export interface ISkillGroup {
-  readonly id: string; // Добавлен ID для React-ключей (key)
+  readonly id: string;
   readonly category: string;
-  readonly icon: 'code' | 'server' | 'layout'; // Алиасы для динамического рендеринга иконок в UI
+  readonly icon: SkillIconName; // добавлен 'wrench'
   readonly items: readonly string[];
 }
 
@@ -33,12 +36,13 @@ export interface IContactItem {
   readonly id: string;
   readonly label: string;
   readonly url: string;
-  readonly icon: 'telegram' | 'github' | 'mail' | 'linkedin'; // Пул безопасных иконок
+  readonly icon: ContactIconName;
 }
 
 export interface IPortfolioData {
   readonly hero: {
     readonly name: string;
+    readonly jobTitle: string;
     readonly title: string;
     readonly subRole: string;
     readonly about: string;
@@ -52,7 +56,8 @@ export interface IPortfolioData {
 // 🛸 ЕДИНАЯ БАЗА ДАННЫХ ВАШЕГО ПОРТФОЛИО
 export const portfolioData = {
   hero: {
-    name: 'Frontend Developer',
+    name: 'Ольга Булахова',
+    jobTitle: 'Frontend Developer',
     title: 'Разрабатываю современные веб\u2011интерфейсы',
     subRole: 'React / Next.js / WordPress',
     about:
@@ -68,33 +73,46 @@ export const portfolioData = {
         'React',
         'Next.js 15/16',
         'TypeScript',
+        'JavaScript (ES2023+)',
+        'HTML5',
+        'CSS3',
+        'Tailwind CSS',
         'Zustand',
+        'TanStack Query',
         'React Hook Form',
         'Zod',
-        'Tailwind CSS',
+        'Framer Motion',
       ],
     },
     {
-      id: 'skill-backend',
-      category: 'Backend & Infrastructure',
-      icon: 'server',
+      id: 'skill-tooling',
+      category: 'Tooling & Testing',
+      icon: 'wrench',
       items: [
-        'Supabase',
-        'Serverless Functions',
-        'REST API Integration',
-        'Node.js',
-        'PostgreSQL',
+        'Vite',
+        'Webpack',
+        'ESLint',
+        'Prettier',
+        'Vitest',
+        'Jest',
+        'React Testing Library',
+        'Playwright',
+        'Storybook',
+        'Git',
+        'AI-Assisted Development',
+        'Prompt Engineering',
       ],
     },
     {
       id: 'skill-cms',
-      category: 'CMS & Content Management',
+      category: 'CMS',
       icon: 'layout',
       items: [
         'WordPress',
         'Custom Themes',
         'WooCommerce',
         'Plugin Development',
+        'Carbon Fields',
         'PHP',
       ],
     },

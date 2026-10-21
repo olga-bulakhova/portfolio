@@ -13,7 +13,7 @@ export const Hero = () => {
   return (
     <Section
       id="hero"
-      className="flex min-h-[calc(100vh-4rem)] items-center justify-center pt-24 md:pt-10"
+      className="flex items-center justify-center pt-24 md:pt-40"
     >
       <motion.div
         variants={heroContainerVariants}
@@ -23,6 +23,7 @@ export const Hero = () => {
       >
         <HeroIntro
           name={hero.name}
+          jobTitle={hero.jobTitle}
           title={hero.title}
           subRole={hero.subRole}
           onPrimaryClick={() => scrollToSection('projects')}
