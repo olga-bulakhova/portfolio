@@ -6,10 +6,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     const savedTheme = localStorage.getItem('portfolio-theme') as Theme;
     if (savedTheme) return savedTheme;
 
-    const prefersDark = window.matchMedia(
-      '(prefers-color-scheme: dark)',
-    ).matches;
-    return prefersDark ? 'dark' : 'light';
+    return 'dark';
   });
 
   useEffect(() => {
