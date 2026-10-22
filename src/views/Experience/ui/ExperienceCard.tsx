@@ -26,6 +26,7 @@ export const ExperienceCard = ({ item, index }: ExperienceCardProps) => {
         aria-hidden="true"
         className="hidden w-full md:block md:w-[calc(50%-2rem)]"
       />
+      
 
       <TimelineDot className="hidden md:block" />
 
@@ -33,7 +34,7 @@ export const ExperienceCard = ({ item, index }: ExperienceCardProps) => {
       <motion.div
         variants={cardVariants}
         custom={index}
-        className="w-full md:w-[calc(50%-2rem)] md:pl-0 md:pl-12"
+        className="w-full md:w-[calc(50%-2rem)] md:pl-0"
       >
         <Card className="border-brand-primary/10 p-6 transition-colors duration-300 hover:border-brand-primary/30">
           <Tag> {item.period}</Tag>
