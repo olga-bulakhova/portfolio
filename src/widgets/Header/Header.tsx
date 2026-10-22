@@ -1,13 +1,14 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Button } from '@/shared/ui/Button/Button';
 import { ThemeToggle } from '@/features/theme';
-import { CONTACTS_ID } from './model/navLinks';
+import { CONTACTS_ID, NAV_LINKS } from './model/navLinks';
 import { Logo } from './ui/Logo';
 import { BurgerButton } from './ui/BurgerButton';
 import { DesktopNav } from './ui/DesktopNav';
 import { MobileNav } from './ui/MobileNav';
 import { useLockBodyScroll } from './lib/useLockBodyScroll';
 import { useSmoothScroll } from '@/shared/lib';
+import { useScrollSpy } from './lib/useScrollSpy';
 
 const MOBILE_MENU_ID = 'mobile-menu';
 
@@ -15,15 +16,21 @@ export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const scrollToSection = useSmoothScroll();
 
-  // В будущем сюда придёт активный ID из хука useScrollSpy
-  const activeSection = 'hero';
+  const sectionIds = useMemo(() => NAV_LINKS.map((link) => link.id), []);
+  const activeSection = useScrollSpy(sectionIds);
 
   useLockBodyScroll(isMobileMenuOpen);
 
+  // Обновите этот метод внутри вашего компонента Header
   const handleLinkClick = useCallback(
     (id: string) => {
+      // 1. Сначала закрываем меню, что инициирует снятие блокировки хуком useLockBodyScroll
       setIsMobileMenuOpen(false);
-      scrollToSection(id);
+
+      // 2. Даем браузеру перерисовать стили body и только потом плавно крутим страницу
+      setTimeout(() => {
+        scrollToSection(id);
+      }, 0);
     },
     [scrollToSection],
   );

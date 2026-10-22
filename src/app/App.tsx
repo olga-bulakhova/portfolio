@@ -9,12 +9,14 @@ import { Contacts } from '@/views/Contacts';
 function App() {
   return (
     <ThemeProvider>
-      <Header />
-      <Hero />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Contacts />
+      <div>
+        <Header />
+        <Hero />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Contacts />
+      </div>
     </ThemeProvider>
   );
 }

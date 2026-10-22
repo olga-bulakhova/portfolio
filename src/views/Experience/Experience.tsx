@@ -15,8 +15,8 @@ export const Experience = () => {
       subtitle="Мой путь во фронтенде: продуктовые компании, фриланс и разные стеки — от WordPress до React."
       className="pt-22 md:pt-40"
     >
-      <div className="relative mx-auto w-full max-w-6xl pt-4">
-        <TimelineLine />
+      <div className="relative mx-auto w-full max-w-6xl">
+        <TimelineLine className="hidden md:block" />
 
         <motion.div
           variants={containerVariants}

@@ -24,7 +24,7 @@ export const ProjectLinks = ({ live, github, title }: ProjectLinksProps) => (
         href={github}
         target="_blank"
         variant="glass"
-        className="h-9 w-9 !p-2"
+        className="h-9 w-9 !border-brand-primary/40 !p-2"
         aria-label={`Исходный код проекта «${title}» на GitHub`}
       >
         <GithubIcon className="h-4 w-4 fill-current" />
