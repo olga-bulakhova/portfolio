@@ -4,6 +4,7 @@ import { SkillIcon } from '../model/skillIcons';
 import { skillCardVariants } from '../model/skillsAnimations';
 import { SkillTag } from './SkillTag';
 import type { ISkillGroup } from '@/shared/constants/portfolioData'; // или из файла типов
+import { Badge } from '@/shared/ui';
 
 type SkillCardProps = { group: ISkillGroup };
 
@@ -14,9 +15,9 @@ export const SkillCard = ({ group }: SkillCardProps) => {
         <div className="space-y-6">
           {/* Категория + иконка */}
           <div className="flex items-center gap-3 border-b border-glass-border/30 pb-3">
-            <div className="rounded-xl border border-brand-primary/20 bg-brand-primary/10 p-2 text-brand-primary">
+            <Badge>
               <SkillIcon name={group.icon} className="h-6 w-6" />
-            </div>
+            </Badge>
 
             <h3 className="text-lg font-bold tracking-tight text-glass-text">
               {group.category}

@@ -1,6 +1,6 @@
 export type ProjectCategory = 'frontend' | 'fullstack' | 'wordpress';
 export type SkillIconName = 'code' | 'server' | 'layout' | 'wrench';
-export type ContactIconName = 'telegram' | 'github' | 'mail' | 'linkedin';
+export type ContactIconName = 'telegram' | 'mail' | 'phone';
 
 export interface IProject {
   readonly id: string;
@@ -28,7 +28,7 @@ export interface IExperience {
 export interface ISkillGroup {
   readonly id: string;
   readonly category: string;
-  readonly icon: SkillIconName; // добавлен 'wrench'
+  readonly icon: SkillIconName;
   readonly items: readonly string[];
 }
 
@@ -36,6 +36,7 @@ export interface IContactItem {
   readonly id: string;
   readonly label: string;
   readonly url: string;
+  readonly value: string;
   readonly icon: ContactIconName;
 }
 
@@ -53,7 +54,6 @@ export interface IPortfolioData {
   readonly contacts: readonly IContactItem[];
 }
 
-// 🛸 ЕДИНАЯ БАЗА ДАННЫХ ВАШЕГО ПОРТФОЛИО
 export const portfolioData = {
   hero: {
     name: 'Ольга Булахова',
@@ -325,13 +325,27 @@ export const portfolioData = {
   ],
 
   contacts: [
-    { id: 'c-tg', label: 'Telegram', url: 'https://t.me', icon: 'telegram' },
-    { id: 'c-gh', label: 'GitHub', url: 'https://github.com', icon: 'github' },
+    {
+      id: 'c-phone',
+      label: 'Телефон',
+      value: '+375 (29) 612-12-09',
+      url: 'tel:+375296121209',
+      icon: 'phone',
+    },
+    {
+      id: 'c-tg',
+      label: 'Telegram',
+      value: '@olga_bulakhova',
+      url: 'https://t.me/olga_bulakhova',
+      icon: 'telegram',
+    },
+
     {
       id: 'c-mail',
       label: 'Email',
-      url: 'mailto:hello@yourdomain.com',
+      value: 'olga.bulakhovaa@gmail.com',
+      url: 'mailto:olga.bulakhovaa@gmail.com',
       icon: 'mail',
     },
   ],
-} as const satisfies IPortfolioData; // 🌟 Ключевое исправление: идеальный вывод типов + проверка контракта
+} as const satisfies IPortfolioData;

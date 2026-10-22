@@ -4,6 +4,7 @@ import { Hero } from '@/views/Hero';
 import { Skills } from '@/views/Skills';
 import { Projects } from '@/views/Projects';
 import { Experience } from '@/views/Experience';
+import { Contacts } from '@/views/Contacts';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Skills />
       <Projects />
       <Experience />
+      <Contacts />
     </ThemeProvider>
   );
 }

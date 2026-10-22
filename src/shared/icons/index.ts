@@ -6,3 +6,6 @@ export { WrenchIcon } from './WrenchIcon';
 export { CheckCircleIcon } from './CheckCircleIcon';
 export { ExternalLinkIcon } from './ExternalLinkIcon';
 export { GithubIcon } from './GithubIcon';
+export { MailIcon } from './MailIcon';
+export { PhoneIcon } from './PhoneIcon';
+export { TelegramIcon } from './TelegramIcon';
