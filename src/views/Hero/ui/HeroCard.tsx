@@ -29,9 +29,7 @@ export const HeroCard = ({ about }: HeroCardProps) => (
       <div className="grid grid-cols-2 gap-4 border-t border-glass-border/30 pt-4 text-xs">
         <div>
           <span className="mb-0.5 block text-glass-muted">Локация:</span>
-          <span className="font-semibold text-glass-text">
-            Удаленно / Гибрид
-          </span>
+          <span className="font-semibold text-glass-text">Беларусь, Минск</span>
         </div>
         <div>
           <span className="mb-0.5 block text-glass-muted">Статус:</span>
